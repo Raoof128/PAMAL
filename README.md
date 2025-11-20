@@ -24,11 +24,11 @@ graph TD
     User[User / CLI] -->|Request Access| API[FastAPI Gateway]
     Admin[Admin] -->|Approve Request| API
     API -->|Check Policy| Policy[Policy Engine]
-    API -->|Store/Retrieve| Vault[Vault Engine (AES-256)]
-    Vault -->|Persist| DB[(SQLite DB)]
+    API -->|Store/Retrieve| Vault["Vault Engine (AES-256)"]
+    Vault -->|Persist| DB[("SQLite DB")]
     
     Rotator[Rotation Engine] -->|Schedule| Vault
-    Rotator -->|Update Password| Target[Target Systems (Simulated)]
+    Rotator -->|Update Password| Target["Target Systems (Simulated)"]
     
     API -->|Log Event| Audit[Audit Logger]
     Rotator -->|Log Event| Audit
