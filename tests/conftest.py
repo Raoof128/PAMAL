@@ -1,4 +1,5 @@
 import os
+
 import pytest
 
 # Ensure PAM_MASTER_KEY is set for tests if not present
