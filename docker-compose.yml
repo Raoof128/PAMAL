@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  pam-api:
+    build: .
+    command: uvicorn api.server:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - PAM_MASTER_KEY=docker_master_key_secure_123
+    working_dir: /app
+
+  pam-cli:
+    image: python:3.9-slim
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: tail -f /dev/null # Keep alive for manual CLI usage
